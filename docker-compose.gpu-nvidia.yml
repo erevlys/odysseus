@@ -110,13 +110,7 @@ services:
         condition: service_started
     restart: unless-stopped
     # NVIDIA overlay (from docker/gpu.nvidia.yml).
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+    gpus: all
 
   chromadb:
     image: docker.io/chromadb/chroma:latest
