@@ -104,10 +104,8 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,utility
     depends_on:
-      searxng:
-        condition: service_healthy
-      chromadb:
-        condition: service_started
+      - searxng
+      - chromadb   
     restart: unless-stopped
     # NVIDIA overlay (from docker/gpu.nvidia.yml).
     gpus: all
