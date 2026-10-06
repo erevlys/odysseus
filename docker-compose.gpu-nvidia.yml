@@ -108,7 +108,10 @@ services:
       - chromadb   
     restart: unless-stopped
     # NVIDIA overlay (from docker/gpu.nvidia.yml).
-    gpus: all
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all   
 
   chromadb:
     image: docker.io/chromadb/chroma:latest
